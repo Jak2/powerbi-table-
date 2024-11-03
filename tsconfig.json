@@ -1,24 +1,21 @@
 {
     "compilerOptions": {
-      "allowJs": true,
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "jsx": "react",
-      "module": "esnext", 
-      "target": "es6",
-      "sourceMap": true,
-      "outDir": "./.tmp/build/",
-      "moduleResolution": "node",
-      "declaration": true,
-      "lib": [
-        "es2015",
-        "dom"
-      ],
-      "types": [
-        "powerbi-visuals-api"
-      ],
+        "allowJs": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "es2022",
+        "sourceMap": true,
+        "outDir": "./.tmp/build/",
+        "moduleResolution": "node",
+        "declaration": true,
+        
+        "jsx": "react", 
+        "lib": [
+            "es2022",
+            "dom"
+        ]
     },
     "files": [
-      "./src/visual.ts"
+        "./src/visual.ts"
     ]
-  }
+}
