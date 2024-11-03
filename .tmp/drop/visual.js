@@ -411,7 +411,7 @@ var __webpack_unused_export__;
  * LICENSE file in the root directory of this source tree.
  */
 var f=__webpack_require__(540),k=Symbol.for("react.element"),l=Symbol.for("react.fragment"),m=Object.prototype.hasOwnProperty,n=f.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,p={key:!0,ref:!0,__self:!0,__source:!0};
-function q(c,a,g){var b,d={},e=null,h=null;void 0!==g&&(e=""+g);void 0!==a.key&&(e=""+a.key);void 0!==a.ref&&(h=a.ref);for(b in a)m.call(a,b)&&!p.hasOwnProperty(b)&&(d[b]=a[b]);if(c&&c.defaultProps)for(b in a=c.defaultProps,a)void 0===d[b]&&(d[b]=a[b]);return{$$typeof:k,type:c,key:e,ref:h,props:d,_owner:n.current}}__webpack_unused_export__=l;exports.jsx=q;__webpack_unused_export__=q;
+function q(c,a,g){var b,d={},e=null,h=null;void 0!==g&&(e=""+g);void 0!==a.key&&(e=""+a.key);void 0!==a.ref&&(h=a.ref);for(b in a)m.call(a,b)&&!p.hasOwnProperty(b)&&(d[b]=a[b]);if(c&&c.defaultProps)for(b in a=c.defaultProps,a)void 0===d[b]&&(d[b]=a[b]);return{$$typeof:k,type:c,key:e,ref:h,props:d,_owner:n.current}}__webpack_unused_export__=l;exports.jsx=q;exports.jsxs=q;
 
 
 /***/ }),
@@ -511,7 +511,7 @@ if (true) {
 
 /***/ }),
 
-/***/ 90:
+/***/ 676:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -529,26 +529,84 @@ if (true) {
 
 
  // Ensure this file is available in your project
+var savedFilterModel = null;
 const MyGrid = () => {
     const gridRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
     const containerStyle = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => ({ width: "100%", height: "100%" }), []);
     const gridStyle = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => ({ height: "100%", width: "100%" }), []);
     const [rowData, setRowData] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)();
-    const [columnDefs] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([
+    const [columnDefs, setColumnDefs] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([
         { field: "athlete", filter: "agTextColumnFilter" },
         { field: "age", filter: "agNumberColumnFilter", maxWidth: 100 },
-        // Additional column definitions...
+        { field: "country" },
+        { field: "year", maxWidth: 100 },
+        {
+            field: "date",
+            filter: "agDateColumnFilter",
+            filterParams: filterParams,
+        },
+        { field: "sport" },
+        { field: "gold", filter: "agNumberColumnFilter" },
+        { field: "silver", filter: "agNumberColumnFilter" },
+        { field: "bronze", filter: "agNumberColumnFilter" },
+        { field: "total", filter: "agNumberColumnFilter" },
     ]);
     const defaultColDef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => ({ flex: 1, minWidth: 150, filter: true }), []);
     const onGridReady = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((params) => {
-        fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        fetch("./olympic-winners.json")
             .then((resp) => resp.json())
             .then((data) => setRowData(data));
         params.api.getToolPanelInstance("filters").expandFilters();
     }, []);
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: containerStyle, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "example-wrapper", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: gridStyle, className: "ag-theme-quartz-dark", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ag_grid_react__WEBPACK_IMPORTED_MODULE_2__/* .AgGridReact */ .W6, { ref: gridRef, rowData: rowData, columnDefs: columnDefs, defaultColDef: defaultColDef, onGridReady: onGridReady }) }) }) }));
+    const clearFilters = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(() => {
+        gridRef.current.api.setFilterModel(null);
+    }, []);
+    const saveFilterModel = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(() => {
+        savedFilterModel = gridRef.current.api.getFilterModel();
+        var keys = Object.keys(savedFilterModel);
+        var savedFilters = keys.length > 0 ? keys.join(", ") : "(none)";
+        document.querySelector("#savedFilters").textContent = savedFilters;
+    }, []);
+    const restoreFilterModel = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(() => {
+        gridRef.current.api.setFilterModel(savedFilterModel);
+    }, [savedFilterModel]);
+    const restoreFromHardCoded = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(() => {
+        var hardcodedFilter = {
+            country: {
+                type: "set",
+                values: ["Ireland", "United States"],
+            },
+            age: { type: "lessThan", filter: "30" },
+            athlete: { type: "startsWith", filter: "Mich" },
+            date: { type: "lessThan", dateFrom: "2010-01-01" },
+        };
+        gridRef.current.api.setFilterModel(hardcodedFilter);
+    }, []);
+    const destroyFilter = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(() => {
+        gridRef.current.api.destroyFilter("athlete");
+    }, []);
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: containerStyle, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "example-wrapper", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "button-group", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { onClick: saveFilterModel, children: "Save Filter Model" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { onClick: restoreFilterModel, children: "Restore Saved Filter Model" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { onClick: restoreFromHardCoded, title: "Name = 'Mich%', Country = ['Ireland', 'United States'], Age < 30, Date < 01/01/2010", children: "Set Custom Filter Model" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { onClick: clearFilters, children: "Reset Filters" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { onClick: destroyFilter, children: "Destroy Filter" })] }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "button-group", children: ["Saved Filters: ", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { id: "savedFilters", children: "(none)" })] }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: gridStyle, className: "ag-theme-quartz-dark", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ag_grid_react__WEBPACK_IMPORTED_MODULE_2__/* .AgGridReact */ .W6, { ref: gridRef, rowData: rowData, columnDefs: columnDefs, defaultColDef: defaultColDef, onGridReady: onGridReady }) })] }) }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyGrid);
+var filterParams = {
+    comparator: (filterLocalDateAtMidnight, cellValue) => {
+        var dateAsString = cellValue;
+        if (dateAsString == null)
+            return -1;
+        var dateParts = dateAsString.split("/");
+        var cellDate = new Date(Number(dateParts[2]), Number(dateParts[1]) - 1, Number(dateParts[0]));
+        if (filterLocalDateAtMidnight.getTime() === cellDate.getTime()) {
+            return 0;
+        }
+        if (cellDate < filterLocalDateAtMidnight) {
+            return -1;
+        }
+        if (cellDate > filterLocalDateAtMidnight) {
+            return 1;
+        }
+        return 0;
+    },
+};
 
 
 /***/ }),
@@ -562,7 +620,7 @@ const MyGrid = () => {
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(540);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(961);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(338);
-/* harmony import */ var _ag_grid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(90);
+/* harmony import */ var _ag_grid_local_ag_grid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(676);
 
 // import { VisualFormattingSettingsModel } from "./settings";
 // import * as React from "react";
@@ -615,7 +673,7 @@ class Visual {
     constructor(options) {
         this.rootElement = options.element;
         this.reactRoot = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_2__/* .createRoot */ .H)(this.rootElement); // Create React root
-        react_dom__WEBPACK_IMPORTED_MODULE_1__.render(react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ag_grid__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A), this.rootElement);
+        react_dom__WEBPACK_IMPORTED_MODULE_1__.render(react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ag_grid_local_ag_grid__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .A), this.rootElement);
         // this.reactRoot.render(
         //   <StrictMode>
         //     <MyGrid />

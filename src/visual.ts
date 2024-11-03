@@ -12,7 +12,7 @@ import { FormattingSettingsService } from "powerbi-visuals-utils-formattingmodel
 // import * as React from "react";
 import React, { StrictMode } from 'react';
 import * as ReactDOM from "react-dom";
-import { HelloWorld, } from "./component";
+import { HelloWorld, } from "./helloworld/component";
 
 import "./../style/visual.less";
 
@@ -65,7 +65,7 @@ import "./../style/visual.less";
 // visual.ts
 
 import { createRoot } from "react-dom/client";
-import MyGrid from './ag-grid';
+import MyGrid from './ag-grid-local/ag-grid';
 
 export class Visual implements IVisual {
   private rootElement: HTMLElement;

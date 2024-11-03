@@ -30,7 +30,7 @@ const MyGrid: React.FC = () => {
   const defaultColDef = useMemo(() => ({ flex: 1, minWidth: 150, filter: true }), []);
 
   const onGridReady = useCallback((params: GridReadyEvent) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch("./ag-grid-local/olumpic-winners.json")
       .then((resp) => resp.json())
       .then((data: IOlympicData[]) => setRowData(data));
     params.api.getToolPanelInstance("filters")!.expandFilters();
