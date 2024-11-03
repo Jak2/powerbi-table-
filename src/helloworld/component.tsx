@@ -18,7 +18,7 @@ interface HelloWorldProps {
 
 export const HelloWorld: React.FC<HelloWorldProps> = ({ text }) => {
     console.log('HelloWorld component rendered', text);
-  return <h1>{text}</h1>;
+  return <h1>{text}ssdsfeee</h1>;
 };
 
 
@@ -26,7 +26,7 @@ export const HelloWorld: React.FC<HelloWorldProps> = ({ text }) => {
 export default function Component() {
   return (
     <div>
-      <HelloWorld text="Hello, World!" />
+      <HelloWorld text="Hello, Worldddd!" />
     </div>
   );
 }

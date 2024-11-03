@@ -4,11 +4,8 @@ import VisualUpdateOptions = powerbi.extensibility.visual.VisualUpdateOptions;
 import IVisual = powerbi.extensibility.visual.IVisual;
 import "./../style/visual.less";
 export declare class Visual implements IVisual {
-    private target;
+    private rootElement;
     private reactRoot;
-    private formattingSettings;
     constructor(options: VisualConstructorOptions);
     update(options: VisualUpdateOptions): void;
-    getFormattingModel(): powerbi.visuals.FormattingModel;
-    destroy(): void;
 }

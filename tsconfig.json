@@ -9,7 +9,7 @@
         "moduleResolution": "node",
         "declaration": true,
         
-        "jsx": "react", 
+        "jsx": "react-jsx", 
         "lib": [
             "es2022",
             "dom"
