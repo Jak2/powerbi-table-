@@ -1,11 +1,11 @@
 var opentable_DEBUG;
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 485:
 /***/ (() => {
 
+"use strict";
 // extracted by mini-css-extract-plugin
 
 
@@ -14,14 +14,23 @@ var opentable_DEBUG;
 /***/ 84:
 /***/ (() => {
 
+"use strict";
 // extracted by mini-css-extract-plugin
 
+
+/***/ }),
+
+/***/ 694:
+/***/ ((module) => {
+
+module.exports = [{"athlete":"Michael Phelps","age":23,"country":"United States","year":2008,"date":"24/08/2008","sport":"Swimming","gold":8,"silver":0,"bronze":0,"total":8},{"athlete":"Michael Phelps","age":19,"country":"United States","year":2004,"date":"29/08/2004","sport":"Swimming","gold":6,"silver":0,"bronze":2,"total":8},{"athlete":"Michael Phelps","age":27,"country":"United States","year":2012,"date":"12/08/2012","sport":"Swimming","gold":4,"silver":2,"bronze":0,"total":6},{"athlete":"Natalie Coughlin","age":25,"country":"United States","year":2008,"date":"24/08/2008","sport":"Swimming","gold":1,"silver":2,"bronze":3,"total":6},{"athlete":"Aleksey Nemov","age":24,"country":"Russia","year":2000,"date":"01/10/2000","sport":"Gymnastics","gold":2,"silver":1,"bronze":3,"total":6},{"athlete":"Alicia Coutts","age":24,"country":"Australia","year":2012,"date":"12/08/2012","sport":"Swimming","gold":1,"silver":3,"bronze":1,"total":5},{"athlete":"Missy Franklin","age":17,"country":"United States","year":2012,"date":"12/08/2012","sport":"Swimming","gold":4,"silver":0,"bronze":1,"total":5},{"athlete":"Ryan Lochte","age":27,"country":"United States","year":2012,"date":"12/08/2012","sport":"Swimming","gold":2,"silver":2,"bronze":1,"total":5},{"athlete":"Allison Schmitt","age":22,"country":"United States","year":2012,"date":"12/08/2012","sport":"Swimming","gold":3,"silver":1,"bronze":1,"total":5},{"athlete":"Natalie Coughlin","age":21,"country":"United States","year":2004,"date":"29/08/2004","sport":"Swimming","gold":2,"silver":2,"bronze":1,"total":5},{"athlete":"Ian Thorpe","age":17,"country":"Australia","year":2000,"date":"01/10/2000","sport":"Swimming","gold":3,"silver":2,"bronze":0,"total":5},{"athlete":"Dara Torres","age":33,"country":"United States","year":2000,"date":"01/10/2000","sport":"Swimming","gold":2,"silver":0,"bronze":3,"total":5},{"athlete":"Cindy Klassen","age":26,"country":"Canada","year":2006,"date":"26/02/2006","sport":"Speed Skating","gold":1,"silver":2,"bronze":2,"total":5},{"athlete":"Nastia Liukin","age":18,"country":"United States","year":2008,"date":"24/08/2008","sport":"Gymnastics","gold":1,"silver":3,"bronze":1,"total":5},{"athlete":"Marit Bjørgen","age":29,"country":"Norway","year":2010,"date":"28/02/2010","sport":"Cross Country Skiing","gold":3,"silver":1,"bronze":1,"total":5},{"athlete":"Sun Yang","age":20,"country":"China","year":2012,"date":"12/08/2012","sport":"Swimming","gold":2,"silver":1,"bronze":1,"total":4},{"athlete":"Kirsty Coventry","age":24,"country":"Zimbabwe","year":2008,"date":"24/08/2008","sport":"Swimming","gold":1,"silver":3,"bronze":0,"total":4},{"athlete":"Libby Lenton-Trickett","age":23,"country":"Australia","year":2008,"date":"24/08/2008","sport":"Swimming","gold":2,"silver":1,"bronze":1,"total":4},{"athlete":"Ryan Lochte","age":24,"country":"United States","year":2008,"date":"24/08/2008","sport":"Swimming","gold":2,"silver":0,"bronze":2,"total":4},{"athlete":"Inge de Bruijn","age":30,"country":"Netherlands","year":2004,"date":"29/08/2004","sport":"Swimming","gold":1,"silver":1,"bronze":2,"total":4},{"athlete":"Petria Thomas","age":28,"country":"Australia","year":2004,"date":"29/08/2004","sport":"Swimming","gold":3,"silver":1,"bronze":0,"total":4},{"athlete":"Ian Thorpe","age":21,"country":"Australia","year":2004,"date":"29/08/2004","sport":"Swimming","gold":2,"silver":1,"bronze":1,"total":4}]
 
 /***/ }),
 
 /***/ 551:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 /**
  * @license React
  * react-dom.production.min.js
@@ -351,6 +360,7 @@ exports.unstable_renderSubtreeIntoContainer=function(a,b,c,d){if(!ol(c))throw Er
 /***/ 338:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 var __webpack_unused_export__;
 
 
@@ -366,6 +376,7 @@ if (true) {
 /***/ 961:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 function checkDCE() {
@@ -400,6 +411,7 @@ if (true) {
 /***/ 20:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 var __webpack_unused_export__;
 /**
  * @license React
@@ -419,6 +431,7 @@ function q(c,a,g){var b,d={},e=null,h=null;void 0!==g&&(e=""+g);void 0!==a.key&&
 /***/ 287:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 /**
  * @license React
  * react.production.min.js
@@ -452,6 +465,7 @@ exports.useMemo=function(a,b){return U.current.useMemo(a,b)};exports.useReducer=
 /***/ 540:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 if (true) {
@@ -464,6 +478,7 @@ if (true) {
 /***/ 848:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 if (true) {
@@ -476,6 +491,7 @@ if (true) {
 /***/ 463:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 /**
  * @license React
  * scheduler.production.min.js
@@ -502,6 +518,7 @@ exports.unstable_shouldYield=M;exports.unstable_wrapCallback=function(a){var b=y
 /***/ 982:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 if (true) {
@@ -514,6 +531,7 @@ if (true) {
 /***/ 676:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -522,6 +540,7 @@ if (true) {
 /* harmony import */ var ag_grid_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(875);
 /* harmony import */ var ag_grid_community_styles_ag_grid_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(485);
 /* harmony import */ var ag_grid_community_styles_ag_theme_quartz_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(84);
+/* harmony import */ var _json_data_exporter_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(813);
 
 // MyGrid.tsx
 
@@ -529,6 +548,8 @@ if (true) {
 
 
  // Ensure this file is available in your project
+// import olympicWinners from './olympic-winners.json';
+
 var savedFilterModel = null;
 const MyGrid = () => {
     const gridRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
@@ -552,10 +573,20 @@ const MyGrid = () => {
         { field: "total", filter: "agNumberColumnFilter" },
     ]);
     const defaultColDef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => ({ flex: 1, minWidth: 150, filter: true }), []);
+    // const onGridReady = useCallback((params: GridReadyEvent) => {
+    //   fetch("./olympic-winners.json")
+    //     .then((resp) => resp.json())
+    //     .then((data: IOlympicData[]) => setRowData(data));
+    //   params.api.getToolPanelInstance("filters")!.expandFilters();
+    // }, []);
+    // const onGridReady = useCallback(async (params: GridReadyEvent) => {
+    //   // Use import for local JSON data
+    //   const response = await import('./olympic-winners.json');
+    //   setRowData(response.default); // Use .default if the JSON was exported as default
+    //   params.api.getToolPanelInstance("filters")!.expandFilters();
+    // }, []);
     const onGridReady = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((params) => {
-        fetch("./olympic-winners.json")
-            .then((resp) => resp.json())
-            .then((data) => setRowData(data));
+        setRowData(_json_data_exporter_js__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A); // Use the imported data
         params.api.getToolPanelInstance("filters").expandFilters();
     }, []);
     const clearFilters = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(() => {
@@ -614,6 +645,7 @@ var filterParams = {
 /***/ 789:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   b: () => (/* binding */ Visual)
 /* harmony export */ });
@@ -688,9 +720,25 @@ class Visual {
 
 /***/ }),
 
+/***/ 813:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _olympic_winners_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(694);
+/* harmony import */ var _olympic_winners_json__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_olympic_winners_json__WEBPACK_IMPORTED_MODULE_0__);
+// i was unable to import the json data directly and hence i needed this
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((_olympic_winners_json__WEBPACK_IMPORTED_MODULE_0___default()));
+
+/***/ }),
+
 /***/ 346:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   AR_: () => (/* binding */ FakeVScrollComp),
 /* harmony export */   Aag: () => (/* binding */ _setAriaColCount),
@@ -50665,6 +50713,7 @@ ModuleRegistry.__registerModules(
 /***/ 875:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   W6: () => (/* binding */ AgGridReact)
 /* harmony export */ });
@@ -53588,6 +53637,18 @@ function useGridMenuItem(callbacks) {
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -53618,8 +53679,9 @@ function useGridMenuItem(callbacks) {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it declares 'opentable_DEBUG' on top-level, which conflicts with the current library output.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)

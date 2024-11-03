@@ -5,6 +5,8 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
 import "../../style/styles.css"; // Ensure this file is available in your project
 import { IOlympicData } from "./interface";
+// import olympicWinners from './olympic-winners.json';
+import olympicWinners from './json-data-exporter.js';
 import {
     ColDef,
     ColGroupDef,
@@ -41,13 +43,25 @@ const MyGrid: React.FC = () => {
   ]);
   const defaultColDef = useMemo(() => ({ flex: 1, minWidth: 150, filter: true }), []);
 
+  // const onGridReady = useCallback((params: GridReadyEvent) => {
+  //   fetch("./olympic-winners.json")
+  //     .then((resp) => resp.json())
+  //     .then((data: IOlympicData[]) => setRowData(data));
+  //   params.api.getToolPanelInstance("filters")!.expandFilters();
+  // }, []);
+
+  // const onGridReady = useCallback(async (params: GridReadyEvent) => {
+  //   // Use import for local JSON data
+  //   const response = await import('./olympic-winners.json');
+  //   setRowData(response.default); // Use .default if the JSON was exported as default
+  //   params.api.getToolPanelInstance("filters")!.expandFilters();
+  // }, []);
   const onGridReady = useCallback((params: GridReadyEvent) => {
-    fetch("./olympic-winners.json")
-      .then((resp) => resp.json())
-      .then((data: IOlympicData[]) => setRowData(data));
+    setRowData(olympicWinners); // Use the imported data
     params.api.getToolPanelInstance("filters")!.expandFilters();
   }, []);
   
+
   const clearFilters = useCallback(() => {
     gridRef.current!.api.setFilterModel(null);
   }, []);
