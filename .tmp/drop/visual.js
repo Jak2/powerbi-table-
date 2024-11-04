@@ -548,7 +548,7 @@ if (true) {
 
 
  // Ensure this file is available in your project
-// import olympicWinners from './olympic-winners.json';
+// import sandjya from './olympic-winners.json';
 
 var savedFilterModel = null;
 const MyGrid = () => {

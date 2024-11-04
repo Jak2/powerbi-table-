@@ -5,8 +5,8 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
 import "../../style/styles.css"; // Ensure this file is available in your project
 import { IOlympicData } from "./interface";
-// import olympicWinners from './olympic-winners.json';
-import olympicWinners from './json-data-exporter.js';
+// import sandjya from './olympic-winners.json';
+import sandjya from './json-data-exporter.js';
 import {
     ColDef,
     ColGroupDef,
@@ -56,8 +56,9 @@ const MyGrid: React.FC = () => {
   //   setRowData(response.default); // Use .default if the JSON was exported as default
   //   params.api.getToolPanelInstance("filters")!.expandFilters();
   // }, []);
+
   const onGridReady = useCallback((params: GridReadyEvent) => {
-    setRowData(olympicWinners); // Use the imported data
+    setRowData(sandjya); // Use the imported data
     params.api.getToolPanelInstance("filters")!.expandFilters();
   }, []);
   
