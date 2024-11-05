@@ -613,13 +613,18 @@ const MyGrid = () => {
             minWidth: 200,
         };
     }, []);
+    const rowSelection = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => {
+        return {
+            mode: 'multiRow'
+        };
+    }, []);
     const onGridReady = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((params) => {
         // fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
         //   .then((resp) => resp.json())
         //   .then((data) => setRowData(data));
         setRowData(_json_data_exporter_js__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A); // Load data into the grid
     }, []);
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: containerStyle, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "example-wrapper", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: gridStyle, className: isCompact ? "ag-theme-quartz compact-theme" : "ag-theme-quartz", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ag_grid_react__WEBPACK_IMPORTED_MODULE_2__/* .AgGridReact */ .W6, { ref: gridRef, rowData: rowData, columnDefs: columnDefs, defaultColDef: defaultColDef, autoGroupColumnDef: autoGroupColumnDef, sideBar: ['columns', 'filters'], onGridReady: onGridReady, groupIncludeFooter: true, animateRows: true }) }) }) }));
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: containerStyle, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "example-wrapper", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: gridStyle, className: isCompact ? "ag-theme-quartz compact-theme" : "ag-theme-quartz", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ag_grid_react__WEBPACK_IMPORTED_MODULE_2__/* .AgGridReact */ .W6, { ref: gridRef, rowData: rowData, columnDefs: columnDefs, defaultColDef: defaultColDef, autoGroupColumnDef: autoGroupColumnDef, sideBar: ['columns', 'filters'], onGridReady: onGridReady, rowSelection: rowSelection, groupIncludeFooter: true, animateRows: true }) }) }) }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyGrid);
 // Date filter comparator

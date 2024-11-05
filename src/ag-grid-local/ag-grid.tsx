@@ -76,6 +76,12 @@ const MyGrid: React.FC = () => {
     };
   }, []);
 
+  const rowSelection = useMemo(() => { 
+    return { 
+          mode: 'multiRow' 
+      };
+  }, []);
+
   const onGridReady = useCallback((params: GridReadyEvent) => {
     // fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
     //   .then((resp) => resp.json())
@@ -95,6 +101,7 @@ const MyGrid: React.FC = () => {
             autoGroupColumnDef={autoGroupColumnDef}
             sideBar={['columns','filters']}
             onGridReady={onGridReady}
+            rowSelection={rowSelection}
             groupIncludeFooter
             animateRows
           />
