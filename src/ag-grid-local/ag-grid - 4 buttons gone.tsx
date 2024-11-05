@@ -27,59 +27,16 @@ const MyGrid: React.FC = () => {
     { field: "bronze", filter: "agNumberColumnFilter", aggFunc: "sum" },
     { field: "total", filter: "agNumberColumnFilter", aggFunc: "sum" },
   ]);
+
   const defaultColDef = useMemo(() => ({
     flex: 1,
     minWidth: 150,
-    // allow every column to be aggregated
-    enableValue: true,
-    // allow every column to be grouped
-    enableRowGroup: true,
-    // allow every column to be pivoted
-    enablePivot: true,
     filter: true,
     sortable: true,
     resizable: true,
   }), []);
-  const sideBar = useMemo(() => { 
-    return {
-          toolPanels: [
-              {
-                  id: 'columns',
-                  labelDefault: 'Columns',
-                  labelKey: 'columns',
-                  iconKey: 'columns',
-                  toolPanel: 'agColumnsToolPanel',
-                  minWidth: 225,
-                  maxWidth: 225,
-                  width: 225
-              },
-              {
-                  id: 'filters',
-                  labelDefault: 'Filters',
-                  labelKey: 'filters',
-                  iconKey: 'filter',
-                  toolPanel: 'agFiltersToolPanel',
-                  minWidth: 180,
-                  maxWidth: 400,
-                  width: 250
-              }
-          ],
-          position: 'left',
-          defaultToolPanel: 'filters'
-      };
-  }, []);
-
- 
-  const autoGroupColumnDef = useMemo(() => {
-    return {
-      minWidth: 200,
-    };
-  }, []);
 
   const onGridReady = useCallback((params: GridReadyEvent) => {
-    // fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
-    //   .then((resp) => resp.json())
-    //   .then((data) => setRowData(data));
     setRowData(olympicWinners); // Load data into the grid
   }, []);
 
@@ -92,8 +49,7 @@ const MyGrid: React.FC = () => {
             rowData={rowData}
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
-            autoGroupColumnDef={autoGroupColumnDef}
-            sideBar={['columns','filters']}
+            sideBar={true}
             onGridReady={onGridReady}
             groupIncludeFooter
             animateRows

@@ -423,7 +423,7 @@ var __webpack_unused_export__;
  * LICENSE file in the root directory of this source tree.
  */
 var f=__webpack_require__(540),k=Symbol.for("react.element"),l=Symbol.for("react.fragment"),m=Object.prototype.hasOwnProperty,n=f.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,p={key:!0,ref:!0,__self:!0,__source:!0};
-function q(c,a,g){var b,d={},e=null,h=null;void 0!==g&&(e=""+g);void 0!==a.key&&(e=""+a.key);void 0!==a.ref&&(h=a.ref);for(b in a)m.call(a,b)&&!p.hasOwnProperty(b)&&(d[b]=a[b]);if(c&&c.defaultProps)for(b in a=c.defaultProps,a)void 0===d[b]&&(d[b]=a[b]);return{$$typeof:k,type:c,key:e,ref:h,props:d,_owner:n.current}}__webpack_unused_export__=l;exports.jsx=q;exports.jsxs=q;
+function q(c,a,g){var b,d={},e=null,h=null;void 0!==g&&(e=""+g);void 0!==a.key&&(e=""+a.key);void 0!==a.ref&&(h=a.ref);for(b in a)m.call(a,b)&&!p.hasOwnProperty(b)&&(d[b]=a[b]);if(c&&c.defaultProps)for(b in a=c.defaultProps,a)void 0===d[b]&&(d[b]=a[b]);return{$$typeof:k,type:c,key:e,ref:h,props:d,_owner:n.current}}__webpack_unused_export__=l;exports.jsx=q;__webpack_unused_export__=q;
 
 
 /***/ }),
@@ -547,78 +547,82 @@ if (true) {
 
 
 
- // Ensure this file is available in your project
-// import olympicWinners from './olympic-winners.json';
 
-var savedFilterModel = null;
+
 const MyGrid = () => {
     const gridRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
     const containerStyle = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => ({ width: "100%", height: "100%" }), []);
     const gridStyle = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => ({ height: "100%", width: "100%" }), []);
     const [rowData, setRowData] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)();
+    const [isCompact, setIsCompact] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
     const [columnDefs, setColumnDefs] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([
         { field: "athlete", filter: "agTextColumnFilter" },
         { field: "age", filter: "agNumberColumnFilter", maxWidth: 100 },
-        { field: "country" },
+        { field: "country", rowGroup: true, hide: true },
         { field: "year", maxWidth: 100 },
-        {
-            field: "date",
-            filter: "agDateColumnFilter",
-            filterParams: filterParams,
-        },
+        { field: "date", filter: "agDateColumnFilter", filterParams: filterParams },
         { field: "sport" },
-        { field: "gold", filter: "agNumberColumnFilter" },
-        { field: "silver", filter: "agNumberColumnFilter" },
-        { field: "bronze", filter: "agNumberColumnFilter" },
-        { field: "total", filter: "agNumberColumnFilter" },
+        { field: "gold", filter: "agNumberColumnFilter", aggFunc: "sum" },
+        { field: "silver", filter: "agNumberColumnFilter", aggFunc: "sum" },
+        { field: "bronze", filter: "agNumberColumnFilter", aggFunc: "sum" },
+        { field: "total", filter: "agNumberColumnFilter", aggFunc: "sum" },
     ]);
-    const defaultColDef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => ({ flex: 1, minWidth: 150, filter: true }), []);
-    // const onGridReady = useCallback((params: GridReadyEvent) => {
-    //   fetch("./olympic-winners.json")
-    //     .then((resp) => resp.json())
-    //     .then((data: IOlympicData[]) => setRowData(data));
-    //   params.api.getToolPanelInstance("filters")!.expandFilters();
-    // }, []);
-    // const onGridReady = useCallback(async (params: GridReadyEvent) => {
-    //   // Use import for local JSON data
-    //   const response = await import('./olympic-winners.json');
-    //   setRowData(response.default); // Use .default if the JSON was exported as default
-    //   params.api.getToolPanelInstance("filters")!.expandFilters();
-    // }, []);
-    const onGridReady = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((params) => {
-        setRowData(_json_data_exporter_js__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A); // Use the imported data
-        params.api.getToolPanelInstance("filters").expandFilters();
-    }, []);
-    const clearFilters = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(() => {
-        gridRef.current.api.setFilterModel(null);
-    }, []);
-    const saveFilterModel = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(() => {
-        savedFilterModel = gridRef.current.api.getFilterModel();
-        var keys = Object.keys(savedFilterModel);
-        var savedFilters = keys.length > 0 ? keys.join(", ") : "(none)";
-        document.querySelector("#savedFilters").textContent = savedFilters;
-    }, []);
-    const restoreFilterModel = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(() => {
-        gridRef.current.api.setFilterModel(savedFilterModel);
-    }, [savedFilterModel]);
-    const restoreFromHardCoded = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(() => {
-        var hardcodedFilter = {
-            country: {
-                type: "set",
-                values: ["Ireland", "United States"],
-            },
-            age: { type: "lessThan", filter: "30" },
-            athlete: { type: "startsWith", filter: "Mich" },
-            date: { type: "lessThan", dateFrom: "2010-01-01" },
+    const defaultColDef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => ({
+        flex: 1,
+        minWidth: 150,
+        // allow every column to be aggregated
+        enableValue: true,
+        // allow every column to be grouped
+        enableRowGroup: true,
+        // allow every column to be pivoted
+        enablePivot: true,
+        filter: true,
+        sortable: true,
+        resizable: true,
+    }), []);
+    const sideBar = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => {
+        return {
+            toolPanels: [
+                {
+                    id: 'columns',
+                    labelDefault: 'Columns',
+                    labelKey: 'columns',
+                    iconKey: 'columns',
+                    toolPanel: 'agColumnsToolPanel',
+                    minWidth: 225,
+                    maxWidth: 225,
+                    width: 225
+                },
+                {
+                    id: 'filters',
+                    labelDefault: 'Filters',
+                    labelKey: 'filters',
+                    iconKey: 'filter',
+                    toolPanel: 'agFiltersToolPanel',
+                    minWidth: 180,
+                    maxWidth: 400,
+                    width: 250
+                }
+            ],
+            position: 'left',
+            defaultToolPanel: 'filters'
         };
-        gridRef.current.api.setFilterModel(hardcodedFilter);
     }, []);
-    const destroyFilter = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(() => {
-        gridRef.current.api.destroyFilter("athlete");
+    const autoGroupColumnDef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => {
+        return {
+            minWidth: 200,
+        };
     }, []);
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: containerStyle, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "example-wrapper", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "button-group", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { onClick: saveFilterModel, children: "Save Filter Model" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { onClick: restoreFilterModel, children: "Restore Saved Filter Model" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { onClick: restoreFromHardCoded, title: "Name = 'Mich%', Country = ['Ireland', 'United States'], Age < 30, Date < 01/01/2010", children: "Set Custom Filter Model" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { onClick: clearFilters, children: "Reset Filters" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { onClick: destroyFilter, children: "Destroy Filter" })] }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "button-group", children: ["Saved Filters: ", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { id: "savedFilters", children: "(none)" })] }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: gridStyle, className: "ag-theme-quartz-dark", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ag_grid_react__WEBPACK_IMPORTED_MODULE_2__/* .AgGridReact */ .W6, { ref: gridRef, rowData: rowData, columnDefs: columnDefs, defaultColDef: defaultColDef, onGridReady: onGridReady }) })] }) }));
+    const onGridReady = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)((params) => {
+        // fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        //   .then((resp) => resp.json())
+        //   .then((data) => setRowData(data));
+        setRowData(_json_data_exporter_js__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .A); // Load data into the grid
+    }, []);
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: containerStyle, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "example-wrapper", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: gridStyle, className: isCompact ? "ag-theme-quartz compact-theme" : "ag-theme-quartz", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ag_grid_react__WEBPACK_IMPORTED_MODULE_2__/* .AgGridReact */ .W6, { ref: gridRef, rowData: rowData, columnDefs: columnDefs, defaultColDef: defaultColDef, autoGroupColumnDef: autoGroupColumnDef, sideBar: ['columns', 'filters'], onGridReady: onGridReady, groupIncludeFooter: true, animateRows: true }) }) }) }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyGrid);
+// Date filter comparator
 var filterParams = {
     comparator: (filterLocalDateAtMidnight, cellValue) => {
         var dateAsString = cellValue;
@@ -626,16 +630,9 @@ var filterParams = {
             return -1;
         var dateParts = dateAsString.split("/");
         var cellDate = new Date(Number(dateParts[2]), Number(dateParts[1]) - 1, Number(dateParts[0]));
-        if (filterLocalDateAtMidnight.getTime() === cellDate.getTime()) {
+        if (filterLocalDateAtMidnight.getTime() === cellDate.getTime())
             return 0;
-        }
-        if (cellDate < filterLocalDateAtMidnight) {
-            return -1;
-        }
-        if (cellDate > filterLocalDateAtMidnight) {
-            return 1;
-        }
-        return 0;
+        return cellDate < filterLocalDateAtMidnight ? -1 : 1;
     },
 };
 
